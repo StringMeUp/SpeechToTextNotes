@@ -1,6 +1,7 @@
 package com.example.speechtotextnotes.main
 
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognitionListener
@@ -101,9 +102,21 @@ class MainActivity : AppCompatActivity() {
         permissions.forEach {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, it)) {
                 val dialog = AlertDialog.Builder(this)
+                dialog.setIcon(R.drawable.record_audio_not_granted)
                 dialog.setTitle(getString(R.string.dialog_title))
                 dialog.setMessage(getString(R.string.dialog_message))
-                dialog.setCancelable(true)
+                dialog.setCancelable(false)
+                dialog.setPositiveButton(getString(R.string.positive_button)
+                ) { _, _ ->
+                    ActivityCompat.requestPermissions(this, MainViewModel.permissions, 1)
+                }
+                dialog.setNegativeButton(resources.getString(R.string.negative_button)
+                ) { _, _ ->
+                    val logoutIntent = Intent()
+                    logoutIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    logoutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(logoutIntent)
+                }
                 dialog.show()
             }
         }

@@ -15,4 +15,6 @@
     <string name="match_timeout">We could not match your language.</string>
     <string name="listening_notification">Listening…</string>
     <string name="results_generated_notification">Results are ready.</string>
+    <string name="positive_button">I got it</string>
+    <string name="negative_button">I do not care</string>
 </resources>
