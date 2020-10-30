@@ -149,6 +149,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun setSpeechRecognitionListener() {
+        //speechRecognizer should be launched only from main thread
         speechRecognizer.setRecognitionListener(object : RecognitionListener {
             override fun onReadyForSpeech(p0: Bundle?) {
                 Log.d("On Ready Method", "onReadyForSpeech:")
