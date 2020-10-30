@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_fab_pressed_state">#5195CA</color>
+    <color name="color_accent_fab">#FF9800</color>
+    <color name="color_card_tint">#E1F9FB</color>
+    <color name="light_pink_background">#fff8f9</color>
+</resources>

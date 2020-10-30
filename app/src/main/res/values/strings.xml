@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Voice Notes</string>
+    <string name="title_notification">You Do Not Have Any Notes Yet</string>
+    <string name="message_notification">Hold down the microphone to add voice notes.</string>
+    <string name="dialog_message">You have denied the permission to record audio. Hence, your app will not work as expected.</string>
+    <string name="dialog_title">Permission Denied</string>
+    <string name="note_text">Note Text</string>
+    <string name="note_number">No.1</string>
+    <string name="network_timeout">Network timeout occurred.</string>
+    <string name="network_connection">Network connection error</string>
+    <string name="audio_error">Audio error occurred.</string>
+    <string name="server_error">Server error occurred.</string>
+    <string name="user_audio_error">User audio error occurred.</string>
+    <string name="speech_timeout">Speech timeout occurred.</string>
+    <string name="match_timeout">We could not match your language.</string>
+    <string name="listening_notification">Listening…</string>
+    <string name="results_generated_notification">Results are ready.</string>
+</resources>
