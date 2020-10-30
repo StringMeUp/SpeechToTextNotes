@@ -166,15 +166,15 @@ class MainActivity : AppCompatActivity() {
         speechRecognizer.setRecognitionListener(object : RecognitionListener {
             override fun onReadyForSpeech(p0: Bundle?) {
                 Log.d("On Ready Method", "onReadyForSpeech:")
+                Snackbar.make(
+                        binding.createNotesFab, getString(R.string.listening_notification),
+                Snackbar.LENGTH_SHORT
+                )
+                .show()
             }
 
             override fun onBeginningOfSpeech() {
                 Log.d("On Beginning Of Speech", "onBeginningOfSpeech:")
-                Snackbar.make(
-                    binding.createNotesFab, getString(R.string.listening_notification),
-                    Snackbar.LENGTH_SHORT
-                )
-                    .show()
             }
 
             override fun onRmsChanged(floatResult: Float) {
@@ -270,7 +270,7 @@ class MainActivity : AppCompatActivity() {
                             realm.commitTransaction()
                             layoutManager = LinearLayoutManager(this@MainActivity)
                             //update list in adapter
-                            notesAdapter.populateList(realmArrayList)
+                            notesAdapter.populateList(realmArrayList.asReversed())
                             adapter = notesAdapter
                         }
                     }

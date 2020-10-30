@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.realm.Realm
 
@@ -17,22 +18,31 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         )
     }
 
-    val isEmpty = MutableLiveData<Boolean>()
-    val hasPermission = MutableLiveData<Boolean>()
+    //limit access to this val
+    private val _isEmpty = MutableLiveData<Boolean>()
+
+    //expose it via get in activity
+    val isEmpty: LiveData<Boolean>
+        get() = _isEmpty
+
+    //same situation here
+    private val _hasPermission = MutableLiveData<Boolean>()
+    val hasPermission: LiveData<Boolean>
+        get() = _hasPermission
 
     fun notifyWhenDbIsEmpty(realm: Realm) {
         when (realm.isEmpty) {
             true -> {
-                isEmpty.value = true
+                _isEmpty.value = true
             }
-            false -> isEmpty.value = false
+            false -> _isEmpty.value = false
         }
     }
 
     fun checkPermissions() {
         when (hasAllPermissionsGranted(*permissions)) {
-            true -> hasPermission.value = true
-            else -> hasPermission.value = false
+            true -> _hasPermission.value = true
+            else -> _hasPermission.value = false
         }
     }
 
